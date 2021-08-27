@@ -1,12 +1,14 @@
 import sys
 
+sys.stdin = open('input.txt')
+
 N = int(sys.stdin.readline())
 data = list(map(int, sys.stdin.readline().split()))
-DP = [1] * N
-for i in range(1, N):
-    for j in range(i):
-        if data[j] < data[i]:
-            x = DP[j] + 1
-            if x > DP[i]:
-                DP[i] = x
-print(max(DP))
+dp = [1] * (N + 1)
+ans = 1
+for i in range(2, N + 1):
+    for j in range(1, i):
+        if data[j - 1] < data[i - 1]:
+            dp[i] = max(dp[i], dp[j] + 1)
+            ans = max(ans, dp[i])
+print(ans)
