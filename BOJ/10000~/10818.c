@@ -1,13 +1,16 @@
 #include <stdio.h>
 
 int main() {
-    int N, sum;
+    int N, num;
     scanf("%d", &N);
-    char arr[N];
-    scanf("%s", arr);
-    sum = 0;
+    int max = -1000001;
+    int min = 1000001;
     for (int i = 0; i < N; i++) {
-        sum += arr[i] - '0';
+        scanf("%d", &num);
+        if (num < min)
+            min = num;
+        if (num > max)
+            max = num;
     }
-    printf("%d", sum);
+    printf("%d %d", min, max);
 }
