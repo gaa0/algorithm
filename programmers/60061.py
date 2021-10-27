@@ -29,7 +29,7 @@ def solution(n, build_frame):
                     if not beam_chk(x - 1, y + 1):
                         chk = 0
                 if [x, y + 1, 1] in bf_list:
-                    if not beam_chk(x - 1, y + 1):
+                    if not beam_chk(x, y + 1):
                         chk = 0
                 if chk == 0:
                     bf_list.append([x, y, 0])
