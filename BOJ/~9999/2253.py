@@ -1,7 +1,5 @@
 import sys
 
-sys.stdin = open('input.txt')
-
 N, M = map(int, sys.stdin.readline().split())
 max_v = int((2 * N + 0.25) ** 0.5 - 0.5) + 2
 INF = float('inf')
@@ -17,5 +15,6 @@ for i in range(2, N):
                     dp[i + o][o] = dp[i][j] + 1
 
 ans = min(dp[N])
-if ans == INF: ans = -1
+if ans == INF or 2 in small:
+    ans = -1
 print(ans)
