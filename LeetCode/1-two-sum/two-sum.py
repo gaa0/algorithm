@@ -6,6 +6,5 @@ class Solution:
             if comp_num in num_dict:
                 return [i, num_dict[comp_num]]
             num_dict[v] = i
-            
         return []
             
