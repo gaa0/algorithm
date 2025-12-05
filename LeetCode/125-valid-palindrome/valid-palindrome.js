@@ -3,19 +3,19 @@
  * @return {boolean}
  */
 var isPalindrome = function(s) {
-    let lowercase = "";
+    let letterArray = [];
     for (const letter of s) {
         if ("a" <= letter && letter <= "z") {
-            lowercase += letter;
+            letterArray.push(letter);
         } else if ("A" <= letter && letter <= "Z") {
-            lowercase += letter.toLowerCase();
+            letterArray.push(letter.toLowerCase());
         } else if ("0" <= letter && letter <= "9") {
-            lowercase += letter;
+            letterArray.push(letter);
         }
     }
-
+    const lowercase = letterArray.join('');
     const lettersLength = lowercase.length;
-    const halfLength = lettersLength / 2;
+    const halfLength = Math.floor(lettersLength / 2);
     for (let i = 0; i < halfLength; i++) {
         if (lowercase[i] !== lowercase[lettersLength - 1 - i]) return false;
     }
