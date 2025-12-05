@@ -10,29 +10,16 @@ var isValid = function (s) {
             myStack.push(item);
         } else {
             if (item === ')') {
-                if (myStack[stackLength - 1] === '(') {
-                    myStack.pop();
-                } else {
-                    return false;
-                }
+                if (myStack[stackLength - 1] !== '(') return false;
+                myStack.pop();
             } else if (item === ']') {
-                if (myStack[stackLength - 1] === '[') {
-                    myStack.pop();
-                } else {
-                    return false;
-                }
+                if (myStack[stackLength - 1] !== '[') return false;
+                myStack.pop();
             } else if (item === '}') {
-                if (myStack[stackLength - 1] === '{') {
-                    myStack.pop();
-                } else {
-                    return false;
-                }
+                if (myStack[stackLength - 1] !== '{') return false;
+                myStack.pop();
             }
         }
     }
-    if (myStack.length === 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return myStack.length === 0;
 };
