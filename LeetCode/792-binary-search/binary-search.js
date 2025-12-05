@@ -5,14 +5,9 @@
  */
 var search = function(nums, target) {
     let start = 0;
-    let end = nums.length;
+    let end = nums.length - 1;
     while (start <= end) {
-        let idx = 0;
-        if ((end + start) % 2 === 0) {
-            idx = Math.floor((end + start) / 2);
-        } else {
-            idx = Math.floor((end + start) / 2);
-        }
+        let idx = Math.floor((start + end) / 2);
         const st = nums[idx];
         if (target === st) {
             return idx;
