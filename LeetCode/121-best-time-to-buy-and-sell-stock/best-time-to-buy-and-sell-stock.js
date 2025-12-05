@@ -7,7 +7,7 @@ var maxProfit = function(prices) {
     let profit = 0;
 
     for (let i = 0; i < prices.length; i++) {
-        price = prices[i];
+        let price = prices[i];
         if (i == 0) {
             buy = price;
         } else {
