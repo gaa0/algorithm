@@ -31,8 +31,14 @@ var lowestCommonAncestor = function (root, p, q) {
             nodeMap.get(parent).children.add(node.val);
         }
 
-        traverse([...parents, node.val], node.left);
-        traverse([...parents, node.val], node.right);
+        if (node.val > p.val && node.val > q.val) {
+            traverse([...parents, node.val], node.left);
+        } else if (node.val < p.val && node.val < q.val) {
+            traverse([...parents, node.val], node.right);
+        } else {
+            traverse([...parents, node.val], node.left);
+            traverse([...parents, node.val], node.right);
+        }
     }
 
     traverse([root.val], root);
