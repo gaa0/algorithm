@@ -18,18 +18,18 @@ var solution = function(isBadVersion) {
      * @return {integer} The first bad version
      */
     return function(n) {
-        let start = 0;
+        let start = 1;
         let end = n;
-        let min = end;
+
         while (start < end) {
-            const m = Math.round((start + end) / 2);
-            if (isBadVersion(m)) {
-                end = m - 1;
-                min = Math.min(min, m);
+            const mid = Math.floor((start + end) / 2);
+
+            if (isBadVersion(mid)) {
+                end = mid;
             } else {
-                start = m;
+                start = mid + 1;
             }
         }
-        return min;
+        return start;
     };
 };
