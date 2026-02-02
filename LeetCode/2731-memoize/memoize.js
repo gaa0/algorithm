@@ -7,7 +7,6 @@ function memoize(fn) {
     return function(...args) {
         const s = args.toString();
         if (m.has(s)) {
-            console.log(1);
             return m.get(s);
         } else {
             m.set(s, fn(...args));
