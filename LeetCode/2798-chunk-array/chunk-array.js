@@ -5,12 +5,8 @@
  */
 var chunk = function(arr, size) {
     const ans = [];
-    for (const a of arr) {
-        if (ans.length === 0 || [0, size].includes(ans[ans.length - 1].length)) {
-            ans.push([a]);
-        } else {
-            ans[ans.length - 1].push(a);
-        }
+    for (let i = 0; i < arr.length; i += size) {
+        ans.push(arr.slice(i, i + size));
     }
     return ans;
 };
