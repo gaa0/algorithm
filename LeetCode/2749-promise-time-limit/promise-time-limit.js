@@ -8,9 +8,11 @@ var timeLimit = function (fn, t) {
         return Promise.race([
             fn(...args),
             new Promise((resolve, reject) =>
-            setTimeout(() => reject("Time Limit Exceeded"), t))]);
-        };
+                setTimeout(() => reject("Time Limit Exceeded"), t)
+            )
+        ]);
     };
+};
 
 /**
  * const limited = timeLimit((t) => new Promise(res => setTimeout(res, t)), 100);
