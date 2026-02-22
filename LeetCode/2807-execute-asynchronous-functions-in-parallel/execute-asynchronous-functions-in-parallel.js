@@ -7,7 +7,7 @@ var promiseAll = function(functions) {
     for (let i = 0; i < functions.length; i++) {
         pa.push(functions[i]());
     }
-    return Promise.all(pa).then((values) => {return values;});
+    return Promise.all(pa);
 };
 
 /**
