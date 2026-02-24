@@ -3,7 +3,7 @@
  * @return {Object}
  */
 Array.prototype.groupBy = function(fn) {
-    const grouped = new Object;
+    const grouped = {};
     for (const item of this) {
         const o = fn(item);
         if (o in grouped) {
