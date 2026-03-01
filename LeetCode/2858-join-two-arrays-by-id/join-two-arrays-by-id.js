@@ -4,9 +4,9 @@
  * @return {Array}
  */
 var join = function(arr1, arr2) {
-    const j = [];
+    const j = {};
     for (const a of arr1.concat(arr2)) {
-        j[a['id']] = Object.assign({}, j[a['id']], a);
+        j[a['id']] = {...j[a['id']], ...a};
     }
-    return j.filter(e => e !== null);
+    return Object.values(j);
 };
