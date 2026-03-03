@@ -2,24 +2,17 @@
  * @param {Object|Array} obj
  * @return {Object|Array}
  */
-var compactObject = function (obj) {
-    const ofunc = function (o) {
-        for (let [k, v] of Object.entries(o)) {
-            if (v !== null && typeof v === "object") {
-                v = ofunc(v);
-                o[k] = v;
-            }
-            if (!v) {
-                if (Array.isArray(o)) {
-                    const i = o.indexOf(v);
-                    o[i] = null;
-                } else {
-                    delete o[k];
-                }
-            }
-        }
-        if (Array.isArray(o)) o = o.filter(i => i !== null);
-        return o;
+var compactObject = function(obj) {
+    if (!obj || typeof obj !== "object") return obj;
+
+    if (Array.isArray(obj)) {
+        return obj.map(compactObject).filter(Boolean);
     }
-    return ofunc(obj);
+
+    const ans = {};
+    for (const k in obj) {
+        const v = compactObject(obj[k]);
+        if (v) ans[k] = v;
+    }
+    return ans;
 };
