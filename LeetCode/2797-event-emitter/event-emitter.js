@@ -8,9 +8,10 @@ class EventEmitter {
      */
     subscribe(eventName, callback) {
         let i;
-        if (this.events.has(eventName)) {
-            i = this.events.get(eventName).length;
-            this.events.get(eventName).push(callback);
+        const arr = this.events.get(eventName)
+        if (arr) {
+            i = arr.length;
+            arr.push(callback);
         } else {
             i = 0;
             this.events.set(eventName, [callback]);
