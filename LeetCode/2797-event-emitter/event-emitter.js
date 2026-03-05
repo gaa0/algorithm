@@ -7,12 +7,14 @@ class EventEmitter {
      * @return {Object}
      */
     subscribe(eventName, callback) {
+        let i;
         if (this.events.has(eventName)) {
+            i = this.events.get(eventName).length;
             this.events.get(eventName).push(callback);
         } else {
+            i = 0;
             this.events.set(eventName, [callback]);
         }
-        const i = this.events.get(eventName).indexOf(callback);
 
         return {
             unsubscribe: () => {
@@ -27,7 +29,7 @@ class EventEmitter {
      * @return {Array}
      */
     emit(eventName, args = []) {
-        if (_.isEmpty(this.events) || !this.events.has(eventName)) return [];
+        if (!this.events.has(eventName)) return [];
         const r = [];
         for (const event of this.events.get(eventName)) {
             if (event === null) continue;
