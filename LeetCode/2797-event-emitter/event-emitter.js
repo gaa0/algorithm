@@ -1,0 +1,50 @@
+class EventEmitter {
+    events = new Map();
+    
+    /**
+     * @param {string} eventName
+     * @param {Function} callback
+     * @return {Object}
+     */
+    subscribe(eventName, callback) {
+        if (this.events.has(eventName)) {
+            this.events.get(eventName).push(callback);
+        } else {
+            this.events.set(eventName, [callback]);
+        }
+        const i = this.events.get(eventName).indexOf(callback);
+
+        return {
+            unsubscribe: () => {
+                this.events.get(eventName)[i] = null;
+            }
+        };
+    }
+    
+    /**
+     * @param {string} eventName
+     * @param {Array} args
+     * @return {Array}
+     */
+    emit(eventName, args = []) {
+        if (_.isEmpty(this.events) || !this.events.has(eventName)) return [];
+        const r = [];
+        for (const event of this.events.get(eventName)) {
+            if (event === null) continue;
+            r.push(event(...args));
+        }
+        return r;
+    }
+}
+
+/**
+ * const emitter = new EventEmitter();
+ *
+ * // Subscribe to the onClick event with onClickCallback
+ * function onClickCallback() { return 99 }
+ * const sub = emitter.subscribe('onClick', onClickCallback);
+ *
+ * emitter.emit('onClick'); // [99]
+ * sub.unsubscribe(); // undefined
+ * emitter.emit('onClick'); // []
+ */
