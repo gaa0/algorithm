@@ -29,11 +29,11 @@ class EventEmitter {
      * @return {Array}
      */
     emit(eventName, args = []) {
-        if (!this.events.has(eventName)) return [];
+        const arr = this.events.get(eventName);
+        if (!arr) return [];
         const r = [];
-        for (const event of this.events.get(eventName)) {
-            if (event === null) continue;
-            r.push(event(...args));
+        for (const event of arr) {
+            if (event) r.push(event(...args));
         }
         return r;
     }
