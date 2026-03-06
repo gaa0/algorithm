@@ -9,7 +9,7 @@ class EventEmitter {
     subscribe(eventName, callback) {
         let arr = this.events.get(eventName)
         if (!arr) {
-            arr = []
+            arr = [];
             this.events.set(eventName, arr);
         }
 
