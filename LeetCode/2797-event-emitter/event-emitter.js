@@ -7,19 +7,18 @@ class EventEmitter {
      * @return {Object}
      */
     subscribe(eventName, callback) {
-        let i;
-        const arr = this.events.get(eventName)
-        if (arr) {
-            i = arr.length;
-            arr.push(callback);
-        } else {
-            i = 0;
-            this.events.set(eventName, [callback]);
+        let arr = this.events.get(eventName)
+        if (!arr) {
+            arr = []
+            this.events.set(eventName, arr);
         }
+
+        const i = arr.length;
+        arr.push(callback);
 
         return {
             unsubscribe: () => {
-                this.events.get(eventName)[i] = null;
+                arr[i] = null;
             }
         };
     }
