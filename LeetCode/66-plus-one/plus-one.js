@@ -9,7 +9,7 @@ var plusOne = function(digits) {
     }
     const a = BigInt(d) + BigInt(1);
     const ans = [];
-    for (s of String(a)) {
+    for (const s of String(a)) {
         ans.push(Number(s));
     }
     return ans;
