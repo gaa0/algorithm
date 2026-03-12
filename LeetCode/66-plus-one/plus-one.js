@@ -3,14 +3,13 @@
  * @return {number[]}
  */
 var plusOne = function(digits) {
-    let d = '';
-    for (const digit of digits) {
-        d += String(digit);
+    for (let i = digits.length - 1; i >= 0; i--) {
+        if (digits[i] < 9) {
+            digits[i]++;
+            return digits;
+        }
+        digits[i] = 0;
     }
-    const a = BigInt(d) + BigInt(1);
-    const ans = [];
-    for (const s of String(a)) {
-        ans.push(Number(s));
-    }
-    return ans;
+    digits.unshift(1);
+    return digits;
 };
