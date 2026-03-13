@@ -5,13 +5,8 @@
 var arraySign = function(nums) {
     let p = 1;
     for (const num of nums) {
-        p *= num;
+        if (num === 0) return 0;
+        if (num < 0) p *= -1;
     }
-    if (p > 0) {
-        return 1;
-    } else if (p < 0) {
-        return -1;
-    } else {
-        return 0;
-    }
+    return p;
 };
