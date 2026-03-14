@@ -4,7 +4,7 @@
  */
 var canMakeArithmeticProgression = function(arr) {
     let d;
-    const s = arr.sort((a, b) => {return a - b;});
+    const s = arr.sort((a, b) => a - b);
     for (let i = 0; i < arr.length - 1; i++) {
         const a = s[i];
         const b = s[i + 1];
