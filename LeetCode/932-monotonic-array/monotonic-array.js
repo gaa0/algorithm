@@ -8,21 +8,8 @@ var isMonotonic = function(nums) {
         const a = nums[i];
         const b = nums[i + 1];
         const t = b - a;
-        if (t === 0) {
-            continue;
-        } else if ( t > 0) {
-            if (sign === 0) {
-                sign = 1;
-                continue;
-            }
-            if (sign < 0) return false;
-        } else {
-            if (sign === 0) {
-                sign = -1;
-                continue;
-            }
-            if (sign > 0) return false;
-        }
+        if ((t > 0 && sign < 0) || (t < 0 && sign > 0)) return false;
+        if (sign === 0) sign = Math.sign(t);
     }
     return true;
 };
