@@ -2,36 +2,24 @@
  * @param {string} s
  * @return {number}
  */
-var romanToInt = function(s) {
-    let ans = 0;
-    const sl = s.length;
+var romanToInt = function (s) {
     const d = {
-        "I": 1,
-        "V": 5,
-        "X": 10,
-        "L": 50,
-        "C": 100,
-        "D": 500,
-        "M": 1000
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
     }
-    for (let i = 0; i < sl; i++) {
-        let n = 0;
-        const symbol = s[i];
-        if (symbol === 'I') {
-            if (i < sl - 1 && ['V', 'X'].includes(s[i + 1])) {
-                n = -1;
-            }
-        } else if (symbol === 'X') {
-            if (i < sl - 1 && ['L', 'C'].includes(s[i + 1])) {
-                n = -10;
-            }
-        } else if (symbol === 'C') {
-            if (i < sl - 1 && ['D', 'M'].includes(s[i + 1])) {
-                n = -100;
-            }
-        }
-        if (n === 0) n = d[s[i]];
-        ans += n;
+
+    let ans = 0;
+    for (let i = 0; i < s.length; i++) {
+        const curr = d[s[i]];
+        const next = d[s[i + 1]];
+
+        if (curr < next) ans -= curr;
+        else ans += curr;
     }
     return ans;
 };
