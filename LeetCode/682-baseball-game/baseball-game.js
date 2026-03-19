@@ -5,7 +5,7 @@
 var calPoints = function(operations) {
     const records = [];
     for (const operation of operations) {
-        if (Number(operation) >= 0 || Number(operation) <= 9) {
+        if (!isNaN(operation)) {
             records.push(Number(operation));
         } else if (operation === '+') {
             const rl = records.length;
