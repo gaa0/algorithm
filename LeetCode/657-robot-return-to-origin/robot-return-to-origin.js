@@ -16,6 +16,6 @@ var judgeCircle = function(moves) {
             y -= 1;
         }
     }
-    if (x === 0 & y === 0) return true;
+    if (x === 0 && y === 0) return true;
     return false;
 };
