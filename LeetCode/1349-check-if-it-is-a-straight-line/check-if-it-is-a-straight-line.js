@@ -5,15 +5,9 @@
 var checkStraightLine = function(coordinates) {
     const [x1, y1] = coordinates[0];
     const [x2, y2] = coordinates[1];
-    let g = (y2 - y1) / (x2 - x1);
-    const b = y1 - g * x1;
     for (let i = 2; i < coordinates.length; i++) {
-        const [tx, ty] = coordinates[i];
-        if (g === Infinity) {
-            if (tx !== x1) return false;
-            else continue;
-        }
-        if (ty !== g * tx + b) return false;
+        const [x3, y3] = coordinates[i];
+        if ((y2 - y1) * (x3 - x1) !== (y3 - y1) * (x2 - x1)) return false;
     }
     return true;
 };
