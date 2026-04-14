@@ -8,15 +8,15 @@ var reverseVowels = function(s) {
     for (const str of s) {
         if (vs.has(str.toLowerCase())) vowels.push(str);
     }
-    let ans = '';
+    let ans = [];
     let i = vowels.length - 1;
     for (const str of s) {
         if (vs.has(str.toLowerCase())) {
-            ans += vowels[i];
+            ans.push(vowels[i]);
             i--;
         } else {
-            ans += str
+            ans.push(str);
         }
     }
-    return ans;
+    return ans.join('');
 };
